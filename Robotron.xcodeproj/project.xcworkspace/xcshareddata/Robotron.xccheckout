@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F0CBEF44-F5AE-47DE-8E51-4D9725C8B65E</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Robotron</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F2EB288B-3C4D-484E-9809-44415990F742</key>
+		<string>https://alldritt.svn.beanstalkapp.com/affrus2/Robotron/trunk</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Robotron.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F2EB288B-3C4D-484E-9809-44415990F742</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>F2EB288B-3C4D-484E-9809-44415990F742</key>
+		<string>https://alldritt.svn.beanstalkapp.com/affrus2</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://alldritt.svn.beanstalkapp.com/affrus2/Robotron/trunk/Robotron.xcodeproj</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F2EB288B-3C4D-484E-9809-44415990F742</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryBranchesRelativeLocationKey</key>
+			<string>Robotron/branches</string>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlRepositoryTagsRelativeLocationKey</key>
+			<string>Robotron/tags</string>
+			<key>IDESourceControlRepositoryTrunkRelativeLocationKey</key>
+			<string>Robotron/trunk</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F2EB288B-3C4D-484E-9809-44415990F742</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Robotron</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -356,6 +356,7 @@
 		A52C1DE818DABF2D00010B07 /* BRAIN_LEFT3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BRAIN_LEFT3.png; sourceTree = "<group>"; };
 		A52C1DE918DABF2D00010B07 /* BRAIN_LEFT2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BRAIN_LEFT2.png; sourceTree = "<group>"; };
 		A52C1DEA18DABF2D00010B07 /* BRAIN_LEFT1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BRAIN_LEFT1.png; sourceTree = "<group>"; };
+		A52C1E0B18DAC71300010B07 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		A53C1BFE18C964100060B4BB /* ColorCycle3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorCycle3.h; sourceTree = "<group>"; };
 		A53C1BFF18C964100060B4BB /* ColorCycle3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorCycle3.m; sourceTree = "<group>"; };
 		A5A4A77518C82FC80089FA69 /* SKSpriteNode+Robotron.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKSpriteNode+Robotron.h"; sourceTree = "<group>"; };
@@ -608,6 +609,7 @@
 			isa = PBXGroup;
 			children = (
 				A5FCBA4218A95E6700A4A77D /* Notes.md */,
+				A52C1E0B18DAC71300010B07 /* README.md */,
 				A5FCB96C18A857D500A4A77D /* Robotron iOS */,
 				A5FCB95B18A857CA00A4A77D /* Robotron Mac */,
 				A5FCB95218A857B900A4A77D /* Robotron Shared */,

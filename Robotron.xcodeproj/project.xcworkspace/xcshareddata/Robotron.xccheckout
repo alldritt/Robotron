@@ -5,47 +5,45 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>F0CBEF44-F5AE-47DE-8E51-4D9725C8B65E</string>
+	<string>85432767-ED29-4921-A8FE-1E43CCF25181</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Robotron</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>F2EB288B-3C4D-484E-9809-44415990F742</key>
-		<string>https://alldritt.svn.beanstalkapp.com/affrus2/Robotron/trunk</string>
+		<key>784067C8-3A14-43F0-A53D-053F4A9EF745</key>
+		<string>https://github.com/alldritt/Robotron/trunk</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Robotron.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>F2EB288B-3C4D-484E-9809-44415990F742</key>
+		<key>784067C8-3A14-43F0-A53D-053F4A9EF745</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectRepositoryRootDictionary</key>
 	<dict>
-		<key>F2EB288B-3C4D-484E-9809-44415990F742</key>
-		<string>https://alldritt.svn.beanstalkapp.com/affrus2</string>
+		<key>784067C8-3A14-43F0-A53D-053F4A9EF745</key>
+		<string>https://github.com/alldritt/Robotron</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://alldritt.svn.beanstalkapp.com/affrus2/Robotron/trunk/Robotron.xcodeproj</string>
+	<string>https://github.com/alldritt/Robotron/trunk/Robotron.xcodeproj</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>F2EB288B-3C4D-484E-9809-44415990F742</string>
+	<string>784067C8-3A14-43F0-A53D-053F4A9EF745</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryBranchesRelativeLocationKey</key>
-			<string>Robotron/branches</string>
+			<string>branches</string>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.subversion</string>
-			<key>IDESourceControlRepositoryTagsRelativeLocationKey</key>
-			<string>Robotron/tags</string>
 			<key>IDESourceControlRepositoryTrunkRelativeLocationKey</key>
-			<string>Robotron/trunk</string>
+			<string>trunk</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>F2EB288B-3C4D-484E-9809-44415990F742</string>
+			<string>784067C8-3A14-43F0-A53D-053F4A9EF745</string>
 			<key>IDESourceControlWCCName</key>
-			<string>Robotron</string>
+			<string>RobotronII</string>
 		</dict>
 	</array>
 </dict>

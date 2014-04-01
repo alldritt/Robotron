@@ -88,21 +88,25 @@
 			<key>speed</key>
 			<real>1.03</real>
 			<key>color</key>
-			<string>red</string>
+			<string>blue</string>
 			<key>grunts</key>
-			<integer>35</integer>
-			<key>humans</key>
-			<integer>6</integer>
+			<integer>20</integer>
+			<key>moms</key>
+			<integer>15</integer>
+			<key>sons</key>
+			<integer>1</integer>
 			<key>hulks</key>
-			<integer>5</integer>
+			<integer>0</integer>
 			<key>spheroids</key>
-			<integer>4</integer>
+			<integer>1</integer>
 			<key>electrodes</key>
-			<integer>25</integer>
+			<integer>20</integer>
 			<key>electrodeType</key>
-			<string>triangle</string>
+			<string>square</string>
 			<key>electrodeColor</key>
-			<string>colorCycle6</string>
+			<string>colorCycle3</string>
+			<key>brains</key>
+			<integer>15</integer>
 		</dict>
 		<dict>
 			<key>speed</key>

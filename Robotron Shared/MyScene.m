@@ -32,8 +32,8 @@
 @property (assign, nonatomic) NSTimeInterval lastUpdateTime;
 @property (assign, nonatomic, getter=isPlaying) BOOL playing;
 @property (assign, nonatomic) BOOL canPlayerMove;
+@property (assign, nonatomic) BOOL startingNewLevel;
 @property (assign, nonatomic, getter=isSuspended) BOOL suspended;
-@property (assign, nonatomic) NSUInteger levelSpheroids;
 
 @property (strong, nonatomic) NSMutableArray* pendingContacts;
 @property (strong, nonatomic) NSArray* colorCycle1; // red, orange, green, blue - used for "WAVE" and others
@@ -445,7 +445,7 @@
     self.displayLevel = 1;
     self.displayLives = kInitialLives - 1;
     self.playerSpeed = self.gameSpeed = 1.0;
-    self.levelSpheroids = [self.levelInfo[@"spheroids"] intValue];
+    self.startingNewLevel = YES;
     [self startLevel];
 }
 
@@ -456,6 +456,11 @@
     self.humanBonus = kInitialHumanBonus;
     self.gameSpeed = MAX(self.gameSpeed, [self.levelInfo[@"speed"] doubleValue]);
     self.playerSpeed = MAX(self.playerSpeed, self.levelInfo[@"playerSpeed"] ? [self.levelInfo[@"playerSpeed"] doubleValue] : self.gameSpeed);
+    
+    //  Special case: all spheroids have been killed, but there are still enforcers running around.  When restarting the level we
+    //  need a spheriod to re-create the enforcers.
+    if (self.numSpheroids == 0 && self.numEnforcers > 0)
+        ++self.numSpheroids;
 
     [self makePlayer]; // created, but not yet visible
     [self startLevelStage1];
@@ -490,6 +495,7 @@
 
 - (void)startLevelStage5 {
     self.canPlayerMove = YES;
+    self.startingNewLevel = NO;
 }
 
 - (void)startLevelStage6 {
@@ -501,9 +507,9 @@
 }
 
 - (void)startNewLevel {
+    self.startingNewLevel = YES;
     self.canPlayerMove = self.playing = NO;
     self.displayLevel += 1;
-    self.levelSpheroids = [self.levelInfo[@"spheroids"] intValue];
     [self startLevel];
 }
 
@@ -590,10 +596,10 @@
     CGSize boardSize = self.boardNode.frame.size;
     CGRect playerFrame = CGRectInset(self.playerSprite.frame, -50.0, -50.0);
     NSDictionary* levelInfo = self.levelInfo;
-    NSUInteger numHumans = [levelInfo[@"humans"] intValue];
-    NSUInteger numMoms = [levelInfo[@"moms"] intValue];
-    NSUInteger numDads = [levelInfo[@"dads"] intValue];
-    NSUInteger numSons = [levelInfo[@"sons"] intValue];
+    NSUInteger numHumans = self.startingNewLevel ? [levelInfo[@"humans"] intValue] : 0;
+    NSUInteger numMoms = self.startingNewLevel ? [levelInfo[@"moms"] intValue] : self.numMoms;
+    NSUInteger numDads = self.startingNewLevel ? [levelInfo[@"dads"] intValue] : self.numDads;
+    NSUInteger numSons = self.startingNewLevel ? [levelInfo[@"sons"] intValue] : self.numSons;
     
     for (NSUInteger i = 0; i < numHumans; ++i) {
         Human* sprite;
@@ -686,7 +692,7 @@
     CGSize boardSize = self.boardNode.frame.size;
     CGRect playerFrame = CGRectInset(self.playerSprite.frame, -50.0, -50.0);
     NSDictionary* levelInfo = self.levelInfo;
-    NSUInteger numBrains = [levelInfo[@"brains"] intValue];
+    NSUInteger numBrains = self.startingNewLevel ? [levelInfo[@"brains"] intValue] : self.numBrains;
     
     for (NSUInteger i = 0; i < numBrains; ++i) {
         Brain* sprite = [Brain brainWithTexture:[SKTexture textureWithImageNamed:@"BRAIN_STILL"]];
@@ -706,7 +712,7 @@
     CGSize boardSize = self.boardNode.frame.size;
     CGRect playerFrame = CGRectInset(self.playerSprite.frame, -60.0, -60.0);
     NSDictionary* levelInfo = self.levelInfo;
-    NSUInteger numGrunts = [levelInfo[@"grunts"] intValue];
+    NSUInteger numGrunts = self.startingNewLevel ? [levelInfo[@"grunts"] intValue] : self.numGrunts;
     
     for (NSUInteger i = 0; i < numGrunts; ++i) {
         Grunt* sprite = [Grunt gruntWithTexture:[SKTexture textureWithImageNamed:@"GRUNT_1"]];
@@ -729,7 +735,7 @@
     CGSize boardSize = self.boardNode.frame.size;
     CGRect playerFrame = CGRectInset(self.playerSprite.frame, -50.0, -50.0);
     NSDictionary* levelInfo = self.levelInfo;
-    NSUInteger numElectrods = [levelInfo[@"electrodes"] intValue];
+    NSUInteger numElectrods = self.startingNewLevel ? [levelInfo[@"electrodes"] intValue] : self.numElectrodes;
     SKTexture* texture = nil;
 
     if ([levelInfo[@"electrodeType"] isEqualToString:@"star"])
@@ -765,7 +771,7 @@
     CGSize boardSize = self.boardNode.frame.size;
     CGRect interiorFrame = CGRectInset(CGRectMake(0.0, 0.0, boardSize.width, boardSize.height), 40.0, 40.0);
     NSDictionary* levelInfo = self.levelInfo;
-    NSUInteger numSpheroids = self.levelSpheroids > 0 ? [levelInfo[@"spheroids"] intValue] : 0;
+    NSUInteger numSpheroids = self.startingNewLevel ? [levelInfo[@"spheroids"] intValue] : self.numSpheroids;
     SKTexture* texture = [self.spheroidAtlas textureNamed:@"1"];
     
     for (NSUInteger i = 0; i < numSpheroids; ++i) {
@@ -995,15 +1001,37 @@
 
 - (void)updateHumans:(CFTimeInterval)currentTime {
     if (self.isPlaying) {
+        __block NSUInteger numMoms = 0;
+        __block NSUInteger numDads = 0;
+        __block NSUInteger numSons = 0;
         [self.boardNode enumerateChildNodesWithName:@"human"
                                          usingBlock:^(SKNode *node, BOOL *stop) {
                                              [(Human*) node update:currentTime];
+                                             if ([node isKindOfClass:[MomHuman class]])
+                                                 ++numMoms;
+                                             else if ([node isKindOfClass:[DadHuman class]])
+                                                 ++numDads;
+                                             else
+                                                 ++numSons;
                                          }];
+        
+        self.numMoms = numMoms;
+        self.numDads = numDads;
+        self.numSons = numSons;
     }
 }
 
 - (void)updateElectrodes:(CFTimeInterval)currentTime {
-    //  Electrodes don't move
+    //  Electrodes don't move, but we still need to count them.  This repeated counting could be
+    //  avoided if I updated the counts during hit processing.
+    if (self.isPlaying) {
+        __block NSUInteger numElectrodes = 0;
+        [self.boardNode enumerateChildNodesWithName:@"electrode"
+                                         usingBlock:^(SKNode *node, BOOL *stop) {
+                                             ++numElectrodes;
+                                         }];
+        self.numElectrodes = numElectrodes;
+    }
 }
 
 - (void)updateHulks:(CFTimeInterval)currentTime {
@@ -1047,7 +1075,7 @@
                                              [(Spheroid*) node update:currentTime];
                                              ++numSpheroids;
                                          }];
-        self.levelSpheroids = self.numSpheroids = numSpheroids;
+        self.numSpheroids = numSpheroids;
     }
 }
 

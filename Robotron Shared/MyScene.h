@@ -29,9 +29,13 @@
 @property (assign, nonatomic) NSUInteger numGrunts;
 @property (assign, nonatomic) NSUInteger numSpheroids;
 @property (assign, nonatomic) NSUInteger numEnforcers;
+@property (assign, nonatomic) NSUInteger numElectrodes;
 @property (assign, nonatomic) NSUInteger numBrains;
 @property (assign, nonatomic) NSUInteger numQuarks;
 @property (assign, nonatomic) NSUInteger numTanks;
+@property (assign, nonatomic) NSUInteger numDads;
+@property (assign, nonatomic) NSUInteger numMoms;
+@property (assign, nonatomic) NSUInteger numSons;
 
 //  Board contents
 @property (strong, nonatomic) SKSpriteNode* playerSprite;

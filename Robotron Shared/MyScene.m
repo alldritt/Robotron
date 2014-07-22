@@ -792,23 +792,38 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins - this is iOS only at present, but I'll get it working on the Mac at some point. */
     
+    
     if (self.displayLives == 0)
         [self startGame];
     else {
-        if (self.isSuspended)
-            [self.boardNode enumerateChildNodesWithName:@"paused" usingBlock:^(SKNode *node, BOOL *stop) {
-                [node removeFromParent];
-            }];
-        else {
-            SKLabelNode* sprite1 = [SKLabelNode labelNodeWithFontNamed:kGameFont];
-            sprite1.position = CGPointMake(CGRectGetMidX(self.boardNode.frame), CGRectGetMidY(self.boardNode.frame));
-            sprite1.fontSize = 40.0;
-            sprite1.text = @"Tap To Resume";
-            sprite1.name = @"paused";
-            [sprite1 runAction:[RandomColorCycle1 showNextColor]];
-            [self.boardNode addChild:sprite1];
+        BOOL touchedInBoard = NO;
+        CGRect area = CGRectZero;
+        
+        area.size = self.boardNode.frame.size;
+        
+        for (UITouch* aTouch in touches) {
+            if (CGRectContainsPoint(area, [aTouch locationInNode:self.boardNode])) {
+                touchedInBoard = YES;
+                break;
+            }
         }
-        self.suspended = !self.isSuspended;
+
+        if (touchedInBoard) {
+            if (self.isSuspended)
+                [self.boardNode enumerateChildNodesWithName:@"paused" usingBlock:^(SKNode *node, BOOL *stop) {
+                    [node removeFromParent];
+                }];
+            else {
+                SKLabelNode* sprite1 = [SKLabelNode labelNodeWithFontNamed:kGameFont];
+                sprite1.position = CGPointMake(CGRectGetMidX(self.boardNode.frame), CGRectGetMidY(self.boardNode.frame));
+                sprite1.fontSize = 40.0;
+                sprite1.text = @"Tap To Resume";
+                sprite1.name = @"paused";
+                [sprite1 runAction:[RandomColorCycle1 showNextColor]];
+                [self.boardNode addChild:sprite1];
+            }
+            self.suspended = !self.isSuspended;
+        }
     }
 }
 #elif TARGET_OS_MAC && !TARGET_OS_IPHONE

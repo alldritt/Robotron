@@ -79,7 +79,7 @@
 		A5158FF818CA884600FF6DA5 /* SKSpriteNode+Robotron.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A4A77618C82FC80089FA69 /* SKSpriteNode+Robotron.m */; };
 		A5158FFB18CA8AED00FF6DA5 /* Robotron.ttf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = A5E4C8A318AAA95B005299F4 /* Robotron.ttf */; };
 		A52C1DB318D9135E00010B07 /* DDHidLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A52C1DB018D9132400010B07 /* DDHidLib.framework */; };
-		A52C1DB518D9137B00010B07 /* DDHidLib.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = A52C1DB018D9132400010B07 /* DDHidLib.framework */; };
+		A52C1DB518D9137B00010B07 /* DDHidLib.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = A52C1DB018D9132400010B07 /* DDHidLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		A52C1DB918D9543000010B07 /* Enforcer.m in Sources */ = {isa = PBXBuildFile; fileRef = A52C1DB818D9543000010B07 /* Enforcer.m */; };
 		A52C1DC018D9554900010B07 /* Spheroid.m in Sources */ = {isa = PBXBuildFile; fileRef = A52C1DBF18D9554900010B07 /* Spheroid.m */; };
 		A52C1DC118D9554900010B07 /* Spheroid.m in Sources */ = {isa = PBXBuildFile; fileRef = A52C1DBF18D9554900010B07 /* Spheroid.m */; };
@@ -147,6 +147,8 @@
 		A5B8572D18C000C90039DD0F /* Electrode.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B8572C18C000C90039DD0F /* Electrode.m */; };
 		A5B8573018C003180039DD0F /* BaseSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B8572F18C003180039DD0F /* BaseSpriteNode.m */; };
 		A5B8573318C006170039DD0F /* ShootableSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B8573218C006170039DD0F /* ShootableSpriteNode.m */; };
+		A5C361E122C6D902003EF800 /* BrainColorCycle.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C361E022C6D902003EF800 /* BrainColorCycle.m */; };
+		A5C361E222C6D902003EF800 /* BrainColorCycle.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C361E022C6D902003EF800 /* BrainColorCycle.m */; };
 		A5E4C8A718AAA95B005299F4 /* Bonus.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A5E4C89818AAA95B005299F4 /* Bonus.atlas */; };
 		A5E4C8A818AAA95B005299F4 /* Bonus.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A5E4C89818AAA95B005299F4 /* Bonus.atlas */; };
 		A5E4C8AB18AAA95B005299F4 /* Dad.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A5E4C89A18AAA95B005299F4 /* Dad.atlas */; };
@@ -382,6 +384,8 @@
 		A5B8572F18C003180039DD0F /* BaseSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseSpriteNode.m; sourceTree = "<group>"; };
 		A5B8573118C006170039DD0F /* ShootableSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShootableSpriteNode.h; sourceTree = "<group>"; };
 		A5B8573218C006170039DD0F /* ShootableSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShootableSpriteNode.m; sourceTree = "<group>"; };
+		A5C361DF22C6D902003EF800 /* BrainColorCycle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrainColorCycle.h; sourceTree = "<group>"; };
+		A5C361E022C6D902003EF800 /* BrainColorCycle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrainColorCycle.m; sourceTree = "<group>"; };
 		A5E4C89818AAA95B005299F4 /* Bonus.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Bonus.atlas; sourceTree = "<group>"; };
 		A5E4C89A18AAA95B005299F4 /* Dad.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Dad.atlas; sourceTree = "<group>"; };
 		A5E4C89B18AAA95B005299F4 /* Electrodes.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Electrodes.atlas; sourceTree = "<group>"; };
@@ -671,6 +675,8 @@
 				A5FCB95418A857B900A4A77D /* Hulk.m */,
 				A52C1DC718DA59BE00010B07 /* Brain.h */,
 				A52C1DC818DA59BE00010B07 /* Brain.m */,
+				A5C361DF22C6D902003EF800 /* BrainColorCycle.h */,
+				A5C361E022C6D902003EF800 /* BrainColorCycle.m */,
 				A5FCB9F118A863FF00A4A77D /* Grunt.h */,
 				A5FCB9F218A863FF00A4A77D /* Grunt.m */,
 				A52C1DBE18D9554900010B07 /* Spheroid.h */,
@@ -840,17 +846,16 @@
 		A5FCB88C18A854A800A4A77D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "Late Night Software Ltd.";
 			};
 			buildConfigurationList = A5FCB88F18A854A800A4A77D /* Build configuration list for PBXProject "Robotron" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
-				English,
 			);
 			mainGroup = A5FCB88B18A854A800A4A77D;
 			productRefGroup = A5FCB89518A854A800A4A77D /* Products */;
@@ -1107,6 +1112,7 @@
 				A5A4A78C18C91B2A0089FA69 /* RandomColorCycle1.m in Sources */,
 				A5FCB9E718A8591200A4A77D /* JSButton.m in Sources */,
 				A5FCB97D18A857D500A4A77D /* ViewController.m in Sources */,
+				A5C361E122C6D902003EF800 /* BrainColorCycle.m in Sources */,
 				A5FCBA4818A9AB0300A4A77D /* BoardScene.m in Sources */,
 				A5B8572A18BFFE8E0039DD0F /* Bullet.m in Sources */,
 				A5B8573318C006170039DD0F /* ShootableSpriteNode.m in Sources */,
@@ -1127,6 +1133,7 @@
 				A53C1C0118C964100060B4BB /* ColorCycle3.m in Sources */,
 				A5A4A79A18C926EE0089FA69 /* SKColor+Robotron.m in Sources */,
 				A5158FF418CA884600FF6DA5 /* ShootableSpriteNode.m in Sources */,
+				A5C361E222C6D902003EF800 /* BrainColorCycle.m in Sources */,
 				A5FCBA4918A9AB0300A4A77D /* BoardScene.m in Sources */,
 				A5158FF718CA884600FF6DA5 /* Grunt.m in Sources */,
 				A5FCB95A18A857B900A4A77D /* MyScene.m in Sources */,
@@ -1161,22 +1168,37 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1189,7 +1211,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -1200,29 +1222,43 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -1237,6 +1273,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Robotron iOS/Robotron-Prefix.pch";
 				INFOPLIST_FILE = "Robotron iOS/Robotron-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.latenightsw.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Robotron;
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
@@ -1251,6 +1288,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Robotron iOS/Robotron-Prefix.pch";
 				INFOPLIST_FILE = "Robotron iOS/Robotron-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.latenightsw.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Robotron;
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
@@ -1261,6 +1299,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1274,7 +1313,8 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Robotron Mac/Robotron-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.latenightsw.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Robotron;
 				SDKROOT = macosx;
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
@@ -1286,6 +1326,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1296,7 +1337,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Robotron Mac/Robotron-Prefix.pch";
 				INFOPLIST_FILE = "Robotron Mac/Robotron-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.latenightsw.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Robotron;
 				SDKROOT = macosx;
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;

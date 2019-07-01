@@ -9,6 +9,7 @@
 #import "GameMetrics.h"
 #import "Electrode.h"
 #import "Grunt.h"
+#import "Brain.h"
 
 
 @implementation Electrode
@@ -51,6 +52,31 @@
             NSAssert1(NO, @"Umknown electrode type '%@'", self.levelInfo[@"electrodeType"]);
         
         [grunt hitElectrode:self];
+    }
+}
+
+- (void)hitByBrain:(Brain*) brain {
+    if (!self.hasBeenHit) {
+        self.physicsBody = nil;
+        self.hasBeenHit = YES;
+        [self removeAllActions];
+        
+        if ([self.levelInfo[@"electrodeType"] isEqualToString:@"star"])
+            [self runAction:self.gameScene.electrodeAAction];
+        else if ([self.levelInfo[@"electrodeType"] isEqualToString:@"snowflake"])
+            [self runAction:self.gameScene.electrodeBAction];
+        else if ([self.levelInfo[@"electrodeType"] isEqualToString:@"square"])
+            [self runAction:self.gameScene.electrodeCAction];
+        else if ([self.levelInfo[@"electrodeType"] isEqualToString:@"triangle"])
+            [self runAction:self.gameScene.electrodeDAction];
+        else if ([self.levelInfo[@"electrodeType"] isEqualToString:@"rectangle"])
+            [self runAction:self.gameScene.electrodeEAction];
+        else if ([self.levelInfo[@"electrodeType"] isEqualToString:@"diamond"])
+            [self runAction:self.gameScene.electrodeFAction];
+        else
+            NSAssert1(NO, @"Umknown electrode type '%@'", self.levelInfo[@"electrodeType"]);
+        
+        [brain hitElectrode:self];
     }
 }
 

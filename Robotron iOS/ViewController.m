@@ -11,6 +11,10 @@
 
 @implementation ViewController
 
+- (SKView*)sceneView {
+    return (SKView*)self.view;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -27,12 +31,24 @@
                                                  name:UIApplicationDidBecomeActiveNotification
                                                object:nil];
 
+    [GCController startWirelessControllerDiscoveryWithCompletionHandler:^{
+        NSLog(@"controllers: %@", [GCController controllers]);
+    }];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
     // Configure the view.
-    ((SKView*)self.view).showsFPS = YES;
-    ((SKView*)self.view).showsNodeCount = YES;
+    SKView* view = self.sceneView;
+    
+    view.showsFPS = YES;
+    view.showsNodeCount = YES;
+    
+    NSLog(@"self.view.frame: %@", NSStringFromCGRect(self.view.frame));
     
     // Create and configure the scene.
-    self.gameScene = [MyScene sceneWithSize:((SKView*)self.view).bounds.size];
+    self.gameScene = [MyScene sceneWithSize:view.bounds.size];
     self.gameScene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.
@@ -43,12 +59,12 @@
     return YES;
 }
 
-- (NSUInteger)supportedInterfaceOrientations
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return UIInterfaceOrientationMaskAllButUpsideDown;
+        return UIInterfaceOrientationMaskLandscape;
     } else {
-        return UIInterfaceOrientationMaskAll;
+        return UIInterfaceOrientationMaskLandscape;
     }
 }
 
@@ -70,11 +86,11 @@
 }
 
 - (void)handleApplicationWillResignActive:(NSNotification*)note {
-    ((SKView*)self.view).paused = YES;
+    self.sceneView.paused = YES;
 }
 
 - (void)handleApplicationDidBecomeActive:(NSNotification*)note {
-    ((SKView*)self.view).paused = NO;
+    self.sceneView.paused = NO;
 }
 
 @end

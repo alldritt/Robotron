@@ -13,11 +13,13 @@
 @class MyScene;
 @class Bullet;
 @class Grunt;
+@class Brain;
 
 @interface Electrode : ShootableSpriteNode
 
 + (instancetype)electrodeWithTexture:(SKTexture*) texture;
 
 - (void)hitByGrunt:(Grunt*) grunt;
+- (void)hitByBrain:(Brain*) brain;
 
 @end

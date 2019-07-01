@@ -8,8 +8,13 @@
 
 #import "ShootableSpriteNode.h"
 
+
+@class Electrode;
+
 @interface Brain : ShootableSpriteNode
 
 + (instancetype)brainWithTexture:(SKTexture*) texture;
+
+- (void)hitElectrode:(Electrode*) electrode;
 
 @end

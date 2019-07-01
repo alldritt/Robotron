@@ -8,6 +8,7 @@
 
 #import "GameMetrics.h"
 #import "Brain.h"
+#import "Electrode.h"
 #import "SKSpriteNode+Robotron.h"
 
 
@@ -43,6 +44,17 @@
         self.hasBeenHit = YES;
         self.physicsBody = nil;
         self.gameScene.gameScore += kBrainPoints;
+        [self removeAllActions];
+        [self explodeHorizontallyAndVertically];
+    }
+}
+
+- (void)hitElectrode:(Electrode*) electrode {
+    if (!self.hasBeenHit) {
+        self.physicsBody = nil;
+        self.hasBeenHit = YES;
+        
+        [self removeAllActions];
         [self explodeHorizontallyAndVertically];
     }
 }

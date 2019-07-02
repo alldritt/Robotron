@@ -176,6 +176,10 @@
 - (void) disconnectController:(GCController*) controller {
     self.controller.extendedGamepad.leftThumbstick.valueChangedHandler = nil;
     self.controller.extendedGamepad.rightThumbstick.valueChangedHandler = nil;
+    self.controller.extendedGamepad.buttonX.pressedChangedHandler = nil;
+    self.controller.extendedGamepad.buttonY.pressedChangedHandler = nil;
+    self.controller.extendedGamepad.buttonA.pressedChangedHandler = nil;
+    self.controller.extendedGamepad.buttonB.pressedChangedHandler = nil;
     self.controller = nil;
     
     self.moveStick.hidden = false;

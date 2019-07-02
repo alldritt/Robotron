@@ -12,7 +12,8 @@
 #define kGameFontSize           20.0
 
 #define kTopBorder              40.0
-#define kBottomBorder           150.0
+#define kBottomBorder           40.0
+#define kBottomBorderForVisualController 150.0
 #define kLeftBorder             30.0
 #define kRightBorder            kLeftBorder
 

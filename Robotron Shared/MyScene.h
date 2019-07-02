@@ -106,4 +106,6 @@
 
 - (void)constrainToBoard:(SKSpriteNode*)sprite;
 
+- (void)togglePaused;
+
 @end

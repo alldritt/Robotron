@@ -45,6 +45,7 @@
         self.hasHitSomething = YES;
         self.physicsBody = nil;
         [self removeAllActions];
+        
         [self runAction:[SKAction group:@[[SKAction playSoundFileNamed:@"FireHit.wav" waitForCompletion:NO],
                                           [SKAction removeFromParent]]]];
     }

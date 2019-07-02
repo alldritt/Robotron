@@ -848,6 +848,11 @@
 			attributes = {
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "Late Night Software Ltd.";
+				TargetAttributes = {
+					A5FCB89318A854A800A4A77D = {
+						DevelopmentTeam = Z7S6X96M3X;
+					};
+				};
 			};
 			buildConfigurationList = A5FCB88F18A854A800A4A77D /* Build configuration list for PBXProject "Robotron" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1270,6 +1275,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = Z7S6X96M3X;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Robotron iOS/Robotron-Prefix.pch";
 				INFOPLIST_FILE = "Robotron iOS/Robotron-Info.plist";
@@ -1285,6 +1291,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = Z7S6X96M3X;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Robotron iOS/Robotron-Prefix.pch";
 				INFOPLIST_FILE = "Robotron iOS/Robotron-Info.plist";

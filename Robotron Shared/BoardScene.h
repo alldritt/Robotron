@@ -17,4 +17,6 @@
 @property (readonly, nonatomic) SKShapeNode* boardNode;
 @property (readonly, nonatomic) NSDictionary* levelInfo;
 
+- (instancetype) initWithSize:(CGSize)size withVisualController:(BOOL) hasVisualController;
+
 @end

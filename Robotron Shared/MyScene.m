@@ -34,6 +34,7 @@
 @property (assign, nonatomic) BOOL canPlayerMove;
 @property (assign, nonatomic) BOOL startingNewLevel;
 @property (assign, nonatomic, getter=isSuspended) BOOL suspended;
+@property (assign, nonatomic) BOOL hasController;
 
 @property (strong, nonatomic) NSMutableArray* pendingContacts;
 @property (strong, nonatomic) NSArray* colorCycle1; // red, orange, green, blue - used for "WAVE" and others
@@ -150,7 +151,12 @@
 }
 
 -(id)initWithSize:(CGSize)size {
-    if ((self = [super initWithSize:size])) {
+    return [self initWithSize:size withVisualController:TRUE];
+}
+
+-(id)initWithSize:(CGSize)size withVisualController:(BOOL) hasVisualController {
+    if ((self = [super initWithSize:size withVisualController:hasVisualController])) {
+        self.hasController = !hasVisualController;
         self.physicsWorld.gravity = CGVectorMake(0.0, 0.0);
         self.physicsWorld.contactDelegate = self;
         self.pendingContacts = [NSMutableArray arrayWithCapacity:40];
@@ -788,10 +794,33 @@
     }
 }
 
+-(void)togglePaused {
+    /* Called when a mouse click occurs */
+    
+    if (self.displayLives == 0)
+        [self startGame];
+    else {
+        if (self.isSuspended)
+            [self.boardNode enumerateChildNodesWithName:@"paused" usingBlock:^(SKNode *node, BOOL *stop) {
+                [node removeFromParent];
+            }];
+        else {
+            SKLabelNode* sprite1 = [SKLabelNode labelNodeWithFontNamed:kGameFont];
+            sprite1.position = CGPointMake(CGRectGetMidX(self.boardNode.frame), CGRectGetMidY(self.boardNode.frame));
+            sprite1.fontSize = 40.0;
+            sprite1.text = self.hasController ? @"Paused" : @"Tap To Resume";
+            sprite1.name = @"paused";
+            [sprite1 runAction:[RandomColorCycle1 showNextColor]];
+            [self.boardNode addChild:sprite1];
+        }
+        self.suspended = !self.isSuspended;
+    }
+}
+
+
 #if TARGET_OS_IPHONE
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins - this is iOS only at present, but I'll get it working on the Mac at some point. */
-    
     
     if (self.displayLives == 0)
         [self startGame];
@@ -807,47 +836,16 @@
                 break;
             }
         }
-
+        
         if (touchedInBoard) {
-            if (self.isSuspended)
-                [self.boardNode enumerateChildNodesWithName:@"paused" usingBlock:^(SKNode *node, BOOL *stop) {
-                    [node removeFromParent];
-                }];
-            else {
-                SKLabelNode* sprite1 = [SKLabelNode labelNodeWithFontNamed:kGameFont];
-                sprite1.position = CGPointMake(CGRectGetMidX(self.boardNode.frame), CGRectGetMidY(self.boardNode.frame));
-                sprite1.fontSize = 40.0;
-                sprite1.text = @"Tap To Resume";
-                sprite1.name = @"paused";
-                [sprite1 runAction:[RandomColorCycle1 showNextColor]];
-                [self.boardNode addChild:sprite1];
-            }
-            self.suspended = !self.isSuspended;
+            [self togglePaused];
         }
     }
 }
+
 #elif TARGET_OS_MAC && !TARGET_OS_IPHONE
 -(void)mouseDown:(NSEvent *)theEvent {
-    /* Called when a mouse click occurs */
-    
-    if (self.displayLives == 0)
-        [self startGame];
-    else {
-        if (self.isSuspended)
-            [self.boardNode enumerateChildNodesWithName:@"paused" usingBlock:^(SKNode *node, BOOL *stop) {
-                [node removeFromParent];
-            }];
-        else {
-            SKLabelNode* sprite1 = [SKLabelNode labelNodeWithFontNamed:kGameFont];
-            sprite1.position = CGPointMake(CGRectGetMidX(self.boardNode.frame), CGRectGetMidY(self.boardNode.frame));
-            sprite1.fontSize = 40.0;
-            sprite1.text = @"Tap To Resume";
-            sprite1.name = @"paused";
-            [sprite1 runAction:[RandomColorCycle1 showNextColor]];
-            [self.boardNode addChild:sprite1];
-        }
-        self.suspended = !self.isSuspended;
-    }
+    [self togglePaused];
 }
 #endif
 

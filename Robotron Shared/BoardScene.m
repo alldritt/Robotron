@@ -35,8 +35,10 @@
 
 @implementation BoardScene
 
-- (void)_setup {
-    CGRect frame = CGRectMake(0.0, 0.0, self.frame.size.width - kLeftBorder - kRightBorder, self.frame.size.height - kTopBorder - kBottomBorder);
+- (void)_setup:(BOOL) hasVisualController {
+    CGFloat bottomBorder = hasVisualController ? kBottomBorderForVisualController : kBottomBorder;
+    
+    CGRect frame = CGRectMake(0.0, 0.0, self.frame.size.width - kLeftBorder - kRightBorder, self.frame.size.height - kTopBorder - bottomBorder);
     
     //  Create the border rectangle
     CGMutablePathRef pathToDraw = CGPathCreateMutable();
@@ -51,7 +53,7 @@
     self.boardNode.path = pathToDraw;
     self.boardNode.strokeColor = [SKColor robotronRedColor];
     self.boardNode.lineWidth = 1.0;
-    self.boardNode.position = CGPointMake(kLeftBorder, kBottomBorder);
+    self.boardNode.position = CGPointMake(kLeftBorder, bottomBorder);
     [self addChild:self.boardNode];
     self.boardNode.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:frame];
     self.boardNode.physicsBody.dynamic = YES;
@@ -130,14 +132,14 @@
     self.waveLabel = [SKLabelNode labelNodeWithFontNamed:kGameFont];
     self.waveLabel.fontSize = kGameFontSize;
     self.waveLabel.text = @"WAVE";
-    self.waveLabel.position = CGPointMake(self.size.width / 2.0 + 10.0, kBottomBorder - 25.0);
+    self.waveLabel.position = CGPointMake(self.size.width / 2.0 + 10.0, bottomBorder - 25.0);
     [self.waveLabel runAction:[ColorCycle2 colorCycle]];
     [self addChild:self.waveLabel];
 
     self.levelLabel = [SKLabelNode labelNodeWithFontNamed:kGameFont];
     self.levelLabel.fontSize = kGameFontSize;
     self.levelLabel.text = [NSString stringWithFormat:@"%d", (int)self.displayLevel];
-    self.levelLabel.position = CGPointMake(self.size.width / 2.0 - 50.0, kBottomBorder - 25.0);
+    self.levelLabel.position = CGPointMake(self.size.width / 2.0 - 50.0, bottomBorder - 25.0);
     [self.levelLabel runAction:[RandomColorCycle1 showNextColor]];
     [self addChild:self.levelLabel];
     _displayLives = -1;
@@ -146,9 +148,9 @@
     self.backgroundColor = [SKColor robotronBlackColor];
 }
 
-- (instancetype)initWithSize:(CGSize) size {
+- (instancetype)initWithSize:(CGSize) size withVisualController:(BOOL) hasVisualController {
     if ((self = [super initWithSize:size])) {
-        [self _setup];
+        [self _setup:hasVisualController];
     }
     return self;
 }

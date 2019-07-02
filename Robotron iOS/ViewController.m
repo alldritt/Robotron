@@ -8,6 +8,14 @@
 
 #import "ViewController.h"
 #import "MyScene.h"
+#import <GameController/GameController.h>
+
+
+@interface ViewController ()
+
+@property (strong, nonatomic) GCController* controller;
+
+@end
 
 @implementation ViewController
 
@@ -31,6 +39,26 @@
                                                  name:UIApplicationDidBecomeActiveNotification
                                                object:nil];
 
+    [[NSNotificationCenter defaultCenter] addObserverForName:GCControllerDidConnectNotification
+                                                      object:nil
+                                                       queue:nil
+                                                  usingBlock:^(NSNotification* note) {
+                                                      GCController* controller = (GCController*) note.object;
+                                                      GCExtendedGamepad* gamepad = controller.extendedGamepad;
+                                                      
+                                                      if (gamepad)
+                                                          [self connectToController:controller];
+                                                  }];
+    [[NSNotificationCenter defaultCenter] addObserverForName:GCControllerDidDisconnectNotification
+                                                      object:nil
+                                                       queue:nil
+                                                  usingBlock:^(NSNotification* note) {
+                                                      GCController* controller = (GCController*) note.object;
+                                                      
+                                                      if (self.controller == controller)
+                                                          [self disconnectController:controller];
+                                                  }];
+    
     [GCController startWirelessControllerDiscoveryWithCompletionHandler:^{
         NSLog(@"controllers: %@", [GCController controllers]);
     }];
@@ -48,7 +76,7 @@
     NSLog(@"self.view.frame: %@", NSStringFromCGRect(self.view.frame));
     
     // Create and configure the scene.
-    self.gameScene = [MyScene sceneWithSize:view.bounds.size];
+    self.gameScene = [[MyScene alloc] initWithSize:view.bounds.size withVisualController:TRUE];
     self.gameScene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.
@@ -93,4 +121,73 @@
     self.sceneView.paused = NO;
 }
 
+
+//  MARK: GCController callbacks
+
+- (void) connectToController:(GCController*) controller {
+    if (self.controller) {
+        [self disconnectController:self.controller];
+    }
+    
+    self.controller = controller;
+    self.moveStick.hidden = true;
+    self.fireStick.hidden = true;
+
+    
+    controller.extendedGamepad.leftThumbstick.valueChangedHandler = ^(GCControllerDirectionPad * dpad, float xValue, float yValue) {
+        //  Move stick
+        self.gameScene.moveX = ABS(xValue) <= 0.15 ? 0.0 : (xValue > 0.0 ? 1.0 : -1.0);
+        self.gameScene.moveY = ABS(yValue) <= 0.15 ? 0.0 : (yValue > 0.0 ? 1.0 : -1.0);
+    };
+    controller.extendedGamepad.rightThumbstick.valueChangedHandler = ^(GCControllerDirectionPad * dpad, float xValue, float yValue) {
+        //  Fire stick
+        self.gameScene.fireX = ABS(xValue) <= 0.15 ? 0.0 : (xValue > 0.0 ? 1.0 : -1.0);
+        self.gameScene.fireY = ABS(yValue) <= 0.15 ? 0.0 : (yValue > 0.0 ? 1.0 : -1.0);
+    };
+    controller.extendedGamepad.buttonX.pressedChangedHandler = ^(GCControllerButtonInput* button, float value, BOOL pressed) {
+        if (pressed) {
+            [self.gameScene togglePaused];
+        }
+    };
+    controller.extendedGamepad.buttonY.pressedChangedHandler = ^(GCControllerButtonInput* button, float value, BOOL pressed) {
+        if (pressed) {
+            [self.gameScene togglePaused];
+        }
+    };
+    controller.extendedGamepad.buttonA.pressedChangedHandler = ^(GCControllerButtonInput* button, float value, BOOL pressed) {
+        if (pressed) {
+            [self.gameScene togglePaused];
+        }
+    };
+    controller.extendedGamepad.buttonB.pressedChangedHandler = ^(GCControllerButtonInput* button, float value, BOOL pressed) {
+        if (pressed) {
+            [self.gameScene togglePaused];
+        }
+    };
+
+    // Create and configure the scene.
+    self.gameScene = [[MyScene alloc] initWithSize:self.sceneView.bounds.size withVisualController:FALSE];
+    self.gameScene.scaleMode = SKSceneScaleModeAspectFill;
+    
+    // Present the scene.
+    [self.sceneView presentScene:self.gameScene];
+}
+
+- (void) disconnectController:(GCController*) controller {
+    self.controller.extendedGamepad.leftThumbstick.valueChangedHandler = nil;
+    self.controller.extendedGamepad.rightThumbstick.valueChangedHandler = nil;
+    self.controller = nil;
+    
+    self.moveStick.hidden = false;
+    self.fireStick.hidden = false;
+
+    // Create and configure the scene.
+    self.gameScene = [[MyScene alloc] initWithSize:self.sceneView.bounds.size withVisualController:TRUE];
+    self.gameScene.scaleMode = SKSceneScaleModeAspectFill;
+    
+    // Present the scene.
+    [self.sceneView presentScene:self.gameScene];
+}
+
 @end
+

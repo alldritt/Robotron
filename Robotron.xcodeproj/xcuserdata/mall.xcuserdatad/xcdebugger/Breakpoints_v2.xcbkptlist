@@ -7,55 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "787D10AD-C345-422D-A338-BC88EC76A07D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Robotron Mac/AppDelegate.m"
-            timestampString = "583716618.421005"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "-applicationDidFinishLaunching:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "787D10AD-C345-422D-A338-BC88EC76A07D - 31903a97b0861707"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__45-[AppDelegate applicationDidFinishLaunching:]_block_invoke"
-                  moduleName = "Robotron"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mall/Sandboxes/Projects/Robotron/Robotron%20Mac/AppDelegate.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "54"
-                  endingLineNumber = "54"
-                  offsetFromSymbolStart = "432">
-               </Location>
-               <Location
-                  uuid = "787D10AD-C345-422D-A338-BC88EC76A07D - 1f9e1eaf03351a03"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__45-[AppDelegate applicationDidFinishLaunching:]_block_invoke_3"
-                  moduleName = "Robotron"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mall/Sandboxes/Projects/Robotron/Robotron%20Mac/AppDelegate.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "55"
-                  endingLineNumber = "55"
-                  offsetFromSymbolStart = "82">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "489F5622-C169-4819-AF6C-F79536574041"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -98,6 +49,22 @@
             startingLineNumber = "49"
             endingLineNumber = "49"
             landmarkName = "-hitByBullet:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9A16BAB9-5C19-4145-9C8E-AF1FD71B7F6B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Robotron Mac/AppDelegate.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "-applicationDidFinishLaunching:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
